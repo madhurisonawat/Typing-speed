@@ -5,7 +5,7 @@
         <link rel="stylesheet" href ="style.css">
     </head>
     <body>
-        <div >
+        <div class="p-3 m-1">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" id="pills-Home-tab" data-toggle="pill" href="#pills-Home" role="tab" aria-controls="pills-Home" aria-selected="false">Home</a>
@@ -16,10 +16,13 @@
               
               </ul>
               <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade" id="pills-Home" role="tabpanel" aria-labelledby="pills-Home-tab">
+                  <img id="image"src="https://onlinetyping.org/images/typing-test.jpg"/></div>
                 <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Login</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@fat">Sign Up</button>
+<div class="text-center">
+<button id="btn" type="button"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Login</button>
+<button id="btn"type="button"  data-toggle="modal" data-target="#exampleModal1" data-whatever="@fat">Sign Up</button>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -49,6 +52,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -88,7 +92,7 @@
 </div>
 
 </div>
-<div class="tab-pane fade" id="pills-Home" role="tabpanel" aria-labelledby="pills-Home-tab"><img id="image"src="https://onlinetyping.org/images/typing-test.jpg"/></div>
+
 </div> 
 </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
