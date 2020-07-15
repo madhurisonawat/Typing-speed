@@ -8,76 +8,32 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
+      <link rel="stylesheet" href ="style.css">
   </head>
 
   <body>
     <ul class="nav nav-pills mb-3 m-2" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTVOYU9FuLzcw3gsgniRdQhHLcHG7ZzOIowTQ&usqp=CAU"
-          style="height: 50px;"
-          class="img-fluid mr-4 mt-0"
-          alt="Responsive image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTVOYU9FuLzcw3gsgniRdQhHLcHG7ZzOIowTQ&usqp=CAU"style="height: 50px;"class="img-fluid mr-4 mt-0"alt="Responsive image"
         />
       </li>
       <li class="nav-item" role="presentation">
-        <a
-          class="nav-link active"
-          id="pills-home-tab"
-          data-toggle="pill"
-          href="#pills-home"
-          role="tab"
-          aria-controls="pills-home"
-          aria-selected="true"
-          >6 Seconds</a
-        >
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"href="#pills-home"role="tab"aria-controls="pills-home" aria-selected="true">6 Seconds</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a
-          class="nav-link"
-          id="pills-profile-tab"
-          data-toggle="pill"
-          href="#pills-profile"
-          role="tab"
-          aria-controls="pills-profile"
-          aria-selected="false"
-          >1 minutes</a
-        >
+        <a class="nav-link" id="pills-profile-tab"data-toggle="pill" href="#pills-profile"role="tab"aria-controls="pills-profile" aria-selected="false" >1 minutes</a>
+      </li>
+      <li class="nav-item" role="presentation"> <a class="nav-link" id="pills-contact-tab"data-toggle="pill"href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false" >3 minutes</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a
-          class="nav-link"
-          id="pills-contact-tab"
-          data-toggle="pill"
-          href="#pills-contact"
-          role="tab"
-          aria-controls="pills-contact"
-          aria-selected="false"
-          >3 minutes</a
-        >
-      </li>
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link"
-          id="pills-logout-tab"
-          data-toggle="pill"
-          href="#pills-logout"
-          role="tab"
-          aria-controls="pills-logout"
-          aria-selected="false"
-          >Logout</a
+        <a class="nav-link"id="pills-logout-tab"data-toggle="pill"href="#pills-logout" role="tab"aria-controls="pills-logout" aria-selected="false" >Logout</a
         >
       </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-      <div
-        class="tab-pane fade show active container"
-        id="pills-home"
-        role="tabpanel"
-        aria-labelledby="pills-home-tab"
-      >
+      <div class="tab-pane fade show active container" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" >
         <div class="container">
           <div class="container bg-white">
             <div class="display-2 ml-3 text-danger">
@@ -95,8 +51,22 @@
                   given in the below box
                 </h4>
               </div>
-            
+              <div id="cont">
+              <div class="errors">
+                <div class="header_text">Errors</div>
+                <div class="curr_errors">0</div>
+              </div>
+              <div class="timer">
+                <div class="header_text">Time</div>
+                <div class="curr_time">00:00:00</div>
+              </div>
+              <div class="accuracy">
+                <div class="header_text">% Accuracy</div>
+                <div class="curr_accuracy">100</div>
+              </div>
+            </div>
               <div class="container" id="word">
+               
             </div>
             <div class="row">
                 <div class="col-12 text-wrapper">
@@ -104,68 +74,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-3" id="clock">
-                                <div class="timer-wrapper">
-                                    <p class="timer border display-4">00:00:00</p>
-                                </div>
-                            </div>
-                            <div class=" offset-7 col-2">
-                                <button id="reset" class="btn btn-primary button p-3">start</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="offset-5 col-2">
+                    <button id="reset" class="btn btn-primary button p-3">
+                      start
+                    </button>
+                  </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="tab-pane fade"
-        id="pills-profile"
-        role="tabpanel"
-        aria-labelledby="pills-profile-tab"
-      >
+           </div>
+            </div>
+             </div>   
+    </div>
+      <div class="tab-pane fade"id="pills-profile"role="tabpanel"aria-labelledby="pills-profile-tab">
         <div class="float-right container display-3 text-danger">
           Double Your Typing Speed!
         </div>
       </div>
-      <div
-        class="tab-pane fade"
-        id="pills-contact"
-        role="tabpanel"
-        aria-labelledby="pills-contact-tab"
-      >
+      <div class="tab-pane fade"id="pills-contact" role="tabpanel"aria-labelledby="pills-contact-tab">
         <div class="float-right container display-3 text-danger">
           Double Your Typing Speed!
         </div>
       </div>
-      <div
-        class="tab-pane fade"
-        id="pills-logout"
-        role="tabpanel"
-        aria-labelledby="pills-logout-tab"
-      >
+      <div class="tab-pane fade"id="pills-logout"role="tabpanel"aria-labelledby="pills-logout-tab">
         ....
       </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
   </body>
 </html>
