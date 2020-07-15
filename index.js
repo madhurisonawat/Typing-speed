@@ -30,3 +30,77 @@ let quotes_array3 = [
   "Once there was a crow who wishes to be colorful and beautiful like other birds. He then went to the parrot and shared his thoughts.But parrot said peacock is most beautiful bird so talk to him. Then the crow went to the peacock and told him about his looks.Then the peacock replied,” You are the luckiest bird that has been never caged in life and we because of our beauty stay caged, and you are always free”.After listening to this, crow realized his mistake and thanked God for making him like this and he flew away happily. ",
   "Once there was a Lion in the jungle who used to kill 2-3 animals daily for his meal. All animals went to him to tell, that daily one of them will come to him for his meal.So, the Lion agreed and this started going for many days. One day, it was Rabbit’s turn. When he was on his way he saw a well.Now he plans to kill the lion and save himself. He went to the lion and told him that, there is another lion who claims to be more powerful than him.Then the lion asks the rabbit to take him to that lion. The rabbit takes him to the well and said he lives here. When the lion looked in the well he saw his own reflection and jumped in the well and dies.",
 ];
+//code made by  madhuri starts from here
+
+var lobtn = document.getElementById("logBtn");
+logbtn.addEventListener("click", function () {
+  window.location = "home.html";
+});
+
+function finishGame() {
+  // stop the timer
+  clearInterval(timer);
+
+  // disable the input area
+  input_box.disabled = true;
+
+  // show finishing text
+  quote_text.textContent = " Restart  a new game.";
+
+  // display restart button
+  restart_show.style.display = "block";
+
+  // calculate  wpm
+  wpm = Math.round((TypeChar / 5 / timeElapsed) * 60);
+
+  // update wpm box
+
+  wpm_box.textContent = wpm;
+
+  // display the  wpm  div box
+
+  wpm_div.style.display = "block";
+}
+
+function updateTimer() {
+  // decreasing the current time
+  if (time_left > 0) {
+    time_left--;
+
+    // increasing the time consumed
+    time_consumed++;
+
+    // updating the timer
+    timer_text.textContent = timeLeft + "s";
+  } else {
+    finishGame();
+  }
+}
+
+function startGame() {
+  //calling functions here
+  reset();
+  updateQuote();
+  clearInterval(timer);
+  timer = setInterval(updateTimer, 1000);
+}
+
+function reset() {
+  //making every values to its initial stage
+  time_left = time_limit;
+  time_consumed = 0;
+  error = 0;
+  total_errors = 0;
+  accuracy = 0;
+  TypeChar = 0;
+  quote_count = 0;
+  input_box.disabled = false;
+
+  input_box.value = "";
+  quote_text.textContent = "Click on the area below to start the game.";
+  accuracy_text.textContent = 100;
+  timer_text.textContent = timeLeft + "s";
+  error_text.textContent = 0;
+  restart_show.style.display = "none";
+  wpm_box.style.display = "none";
+}
