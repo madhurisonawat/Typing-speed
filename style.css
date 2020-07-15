@@ -1,12 +1,19 @@
-.timer,
-.errors,
-.accuracy {
+.timer6,
+.errors6,
+.accuracy6,
+.timer1,
+.errors1,
+.accuracy1,
+.timer3,
+.errors3,
+.accuracy3 {
   background-color: #ccda46;
   margin: 8px;
   padding: 12px;
   border-radius: 20%;
   box-shadow: black 5px 8px 5px;
 }
+
 #cont {
   display: flex;
   flex-direction: row;
@@ -36,7 +43,9 @@
 .wpm {
   font-size: 2.75rem;
 }
-.wpm {
+.wpm1,
+.wpm6,
+.wpm3 {
   display: none;
 }
 #reset {
@@ -102,4 +111,12 @@ a {
   margin: 10px;
   padding: 25px;
   box-shadow: black 5px 8px 5px;
+}
+.incorrect_char {
+  color: red;
+  text-decoration: underline;
+}
+
+.correct_char {
+  color: darkgreen;
 }
