@@ -21,8 +21,14 @@
 }
 .curr_time,
 .curr_errors,
-.curr_accuracy {
+.curr_accuracy,
+.wpm,
+.cpm {
   font-size: 2.75rem;
+}
+.cpm,
+.wpm {
+  display: none;
 }
 #reset {
   width: 100px;
