@@ -30,77 +30,67 @@ let quotes_array3 = [
   "Once there was a crow who wishes to be colorful and beautiful like other birds. He then went to the parrot and shared his thoughts.But parrot said peacock is most beautiful bird so talk to him. Then the crow went to the peacock and told him about his looks.Then the peacock replied,” You are the luckiest bird that has been never caged in life and we because of our beauty stay caged, and you are always free”.After listening to this, crow realized his mistake and thanked God for making him like this and he flew away happily. ",
   "Once there was a Lion in the jungle who used to kill 2-3 animals daily for his meal. All animals went to him to tell, that daily one of them will come to him for his meal.So, the Lion agreed and this started going for many days. One day, it was Rabbit’s turn. When he was on his way he saw a well.Now he plans to kill the lion and save himself. He went to the lion and told him that, there is another lion who claims to be more powerful than him.Then the lion asks the rabbit to take him to that lion. The rabbit takes him to the well and said he lives here. When the lion looked in the well he saw his own reflection and jumped in the well and dies.",
 ];
-//code made by  madhuri starts from here
 
-var lobtn = document.getElementById("logBtn");
-logbtn.addEventListener("click", function () {
-  window.location = "home.html";
-});
-
-function finishGame() {
-  // stop the timer
-  clearInterval(timer);
-
-  // disable the input area
-  input_box.disabled = true;
-
-  // show finishing text
-  quote_text.textContent = " Restart  a new game.";
-
-  // display restart button
-  restart_show.style.display = "block";
-
-  // calculate  wpm
-  wpm = Math.round((TypeChar / 5 / timeElapsed) * 60);
-
-  // update wpm box
-
-  wpm_box.textContent = wpm;
-
-  // display the  wpm  div box
-
-  wpm_div.style.display = "block";
+let quote1 = document.getElementById("quote1");
+let error_text1 = document.querySelector("currCal_error1");
+let input_area1 = document.getElementById("textArea1");
+let timer_next1 = document.getElementById("currCal_time1");
+let accuracy_text1 = document.getElementById("currCal_accu1");
+let wpm_text1 = document.getElementById("currCal_wpm1");
+let accuracy_group = document.querySelectorAll(".accuracy1");
+let input_char1 = 0;
+let error1 = 0;
+let total_errors1 = 0;
+let current_quote1 = "";
+let timer1 = null;
+function startGame() {
+  updateQuote();
 }
-
-function updateTimer() {
-  // decreasing the current time
-  if (time_left > 0) {
-    time_left--;
-
-    // increasing the time consumed
-    time_consumed++;
-
-    // updating the timer
-    timer_text.textContent = timeLeft + "s";
-  } else {
-    finishGame();
+function updateQuote() {
+  const quoteNo1 = Math.floor(Math.random() * quotes_array1.length);
+  console.log(quoteNo);
+  current_quote1 = quotes_array1[quoteNo1];
+  console.log(current_quote);
+  current_quote1.split("").forEach((char) => {
+    const charSpan1 = document.createElement("span");
+    charSpan1.innerText = char;
+    quote1.appendChild(charSpan);
+  });
+}
+function checkInput() {
+  let arr1 = [];
+  let quote1_text = input_area1.value;
+  arr = quote1_text.split("");
+  input_char1++;
+  error1 = 0;
+  quoteSpanArray1 = quote1.querySelectorAll("span");
+  quoteSpanArray1.forEach((char, index) => {
+    let typedChar1 = arr1[index];
+    console.log(typedChar);
+    if (typedChar1 == null) {
+      char.classList.remove("correct_char");
+      char.classList.remove("incorrect_char");
+    } else if (typedChar === char.innerText) {
+      char.classList.add("correct_char");
+      char.classList.remove("incorrect_char");
+    } else {
+      char.classList.add("incorrect_char");
+      char.classList.remove("correct_char");
+      errors1++;
+    }
+  });
+  error_text1.textContent = total_errors + errors;
+  let correctCharacters1 = characterTyped1 - (total_errors1 + errors1);
+  let accuracyVal1 = (correctCharacters1 / characterTyped1) * 100;
+  accuracy_text1.textContent = Math.round(accuracyVal1);
+  if (quote1_text.length == current_quote1.length) {
+    updateQuote();
+    total_errors1 += errors1;
+    input_area1.value = "";
   }
 }
 
-function startGame() {
-  //calling functions here
-  reset();
-  updateQuote();
-  clearInterval(timer);
-  timer = setInterval(updateTimer, 1000);
-}
-
-function reset() {
-  //making every values to its initial stage
-  time_left = time_limit;
-  time_consumed = 0;
-  error = 0;
-  total_errors = 0;
-  accuracy = 0;
-  TypeChar = 0;
-  quote_count = 0;
-  input_box.disabled = false;
-
-  input_box.value = "";
-  quote_text.textContent = "Click on the area below to start the game.";
-  accuracy_text.textContent = 100;
-  timer_text.textContent = timeLeft + "s";
-  error_text.textContent = 0;
-  restart_show.style.display = "none";
-  wpm_box.style.display = "none";
-}
+window.addEventListener("load", function () {
+  let start1 = document.getElementById("reset1");
+  start1.addEventListener("click", startGame);
+});
