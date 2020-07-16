@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,12 +45,7 @@
                 <h1 class="diplay-2">Typing Game</h1>
                 <h3>Type as many words as you can until time runs out!</h3>
               </div>
-              <!-- <div class="container text-center  mt-3">
-                <h4>
-                  lets play the Typing speed game.where you will type the text
-                  given in the below box
-                </h4>
-              </div> -->
+           
               <div id="cont">
                 <div class="header"> 
                     <div class="wpm6"> 
@@ -110,12 +106,7 @@
                   <h1 class="diplay-2">Typing Game</h1>
                   <h3>Type as many words as you can until time runs out!</h3>
                 </div>
-                <!-- <div class="container text-center  mt-3">
-                  <h4>
-                    lets play the Typing speed game.where you will type the text
-                    given in the below box
-                  </h4>
-                </div> -->
+               
                 <div id="cont">
                     <div class="header"> 
                         <div class="wpm1"> 
@@ -142,7 +133,7 @@
                   </div>
               <div class="row">
                   <div class="col-12 text-wrapper">
-                      <textarea id="textArea1" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
+                      <textarea oninput="processCurrentText()" id="textArea1" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
                   </div>
               </div>
               <div class="row">
@@ -153,7 +144,7 @@
                       </button>
                     </div>
                     <div class="offset-11 col-2 " style="margin-top: -50px;">
-                      <button id="restart_btn1" class="btn btn-primary button p-3">
+                      <button onclick="resetValues()"id="restart_btn1" class="btn btn-primary button p-3">
                         reset
                       </button>
                     </div>
@@ -175,12 +166,7 @@
                 <h1 class="diplay-2">Typing Game</h1>
                 <h3>Type as many words as you can until time runs out!</h3>
               </div>
-              <!-- <div class="container text-center  mt-3">
-                <h4>
-                  lets play the Typing speed game.where you will type the text
-                  given in the below box
-                </h4>
-              </div> -->
+            
               <div id="cont">
                 <div class="header"> 
                     <div class="wpm3"> 

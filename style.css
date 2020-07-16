@@ -1,3 +1,4 @@
+
 .timer6,
 .errors6,
 .accuracy6,
@@ -26,21 +27,12 @@
   font-size: 20px;
   font-weight: 600;
 }
-.curr_time,
-.curr_errors,
-.curr_accuracy,
-.wpm,
-.cpm {
-  font-size: 2.75rem;
-}
-.cpm,
-.wpm {
-  display: none;
-}
-.currCal_time,
-.currCal_error,
-.currCal_accu,
-.wpm {
+
+
+.currCal_time1,
+.currCal_error1,
+.currCal_accu1,
+.wpm1 {
   font-size: 2.75rem;
 }
 .wpm1,
