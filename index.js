@@ -49,7 +49,7 @@ function updateQuote() {
   }
 }
 function processCurrentText() {
-  console.log("yes");
+
   // get current input text and split it
   curr_input1 = input_area1.value;
   curr_input1_array = curr_input1.split("");
@@ -68,11 +68,11 @@ function processCurrentText() {
       char.classList.remove("correct_char");
       char.classList.remove("incorrect_char");
     } else if (typedChar1 === char.innerText) {
-      console.log("y");
+
       char.classList.add("correct_char");
       char.classList.remove("incorrect_char");
     } else {
-      console.log("n");
+     
       char.classList.add("incorrect_char");
       char.classList.remove("correct_char");
       errors1++;
@@ -119,8 +119,14 @@ function finishGame() {
 
   let wpm = Math.round((characterTyped1 / 5 / time_elapsed1) * 60);
   console.log(wpm);
+
   wpm_text1.textContent = wpm;
 
+  let wpm_Array=[]
+wpm_Array.push(wpm_text1.textContent)
+let str1 = JSON.stringify(wpm_Array)
+localStorage.setItem("wpm", str1)
+console.log(wpm_Array)
   wpm_grp1.style.display = "block";
 }
 
@@ -152,3 +158,37 @@ var logbtn = document.getElementById("logBtn");
 logbtn.addEventListener("click", function () {
   window.location = "home.html";
 });
+
+
+// function renderTable(){
+   
+    
+//     let dis = document.getElementById('dis')
+//     dis.style.display="block"
+//     let tbody = document.querySelector("tbody")
+//     let data = localStorage.getItem("data")
+//     let arr = JSON.parse(data)
+
+//   //  wpmArr.sort(function(a, b){ return b.wpm_text1.textContent- a.wpm_text1.textContent  });
+//    for(let i=0 ; i<arr.length; i++){
+    
+//         let trHead = document.createElement("tr")
+
+//         let th = document.createElement("th")
+//         th.setAttribute("scope", "row")
+//         th.innerHTML = i+1
+        
+//         let nameTd = document.createElement("td")
+//         nameTd.innerHTML = arr[i+1][0]
+//         let wpm_td = document.createElement('td')
+//         wpm_td.textContent = wpmArr[i]
+//         let timeTd = document.createElement("td")
+//         timeTd.innerHTML = new Date()
+
+//         trHead.append(th,nameTd,wpm_td,timeTd)
+         
+
+//         tbody.append(trHead)
+//     }
+  
+// }

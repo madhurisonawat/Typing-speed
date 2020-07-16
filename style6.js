@@ -54,7 +54,7 @@ function updateQuote6() {
   }
 }
 function processCurrentText6() {
-  console.log("yes");
+
   // get current input text and split it
   curr_input6 = input_area6.value;
   curr_input6_array = curr_input6.split("");
@@ -74,11 +74,11 @@ function processCurrentText6() {
       char.classList.remove("correct_char");
       char.classList.remove("incorrect_char");
     } else if (typedChar6 === char.innerText) {
-      console.log("y");
+    
       char.classList.add("correct_char");
       char.classList.remove("incorrect_char");
     } else {
-      console.log("n");
+  
       char.classList.add("incorrect_char");
       char.classList.remove("correct_char");
       errors6++;
@@ -124,8 +124,13 @@ function finishGame6() {
 
   let wpm6 = Math.round((characterTyped6 / 5 / time_elapsed6) * 60);
 
-  console.log(wpm6);
+
   wpm_text6.textContent = wpm6;
+  let wpm_Array=[]
+  wpm_Array.push(wpm_text6.textContent)
+  let str1 = JSON.stringify(wpm_Array)
+  localStorage.setItem("wpm", str1)
+ // console.log(wpm_Array)
 
   wpm_grp6.style.display = "block";
 }
@@ -158,3 +163,38 @@ var logbtn = document.getElementById("logBtn");
 logbtn.addEventListener("click", function () {
   window.location = "home.html";
 });
+function renderTable6(){
+ 
+    
+    let dis = document.getElementById('dis6')
+    dis.style.display="block"
+    let tbody = document.querySelector("tbody")
+    let data = localStorage.getItem("data")
+    let arr = JSON.parse(data)
+    console.log(arr)
+    let WPM = localStorage.getItem("wpm")
+    let arr1 = JSON.parse(WPM)
+
+  //  wpmArr.sort(function(a, b){ return b.wpm_text1.textContent- a.wpm_text1.textContent  });
+   for(let i=0 ; i<arr.length; i++){
+    
+        let trHead = document.createElement("tr")
+
+        let th = document.createElement("th")
+        th.setAttribute("scope", "row")
+        th.innerHTML = i+1
+        
+        let nameTd = document.createElement("td")
+        nameTd.innerHTML = arr[i+1][0]
+        let wpm_td = document.createElement('td')
+        wpm_td.textContent = arr1[i]
+        let timeTd = document.createElement("td")
+        timeTd.innerHTML = new Date()
+
+        trHead.append(th,nameTd,wpm_td,timeTd)
+         
+
+        tbody.append(trHead)
+    }
+  
+}
