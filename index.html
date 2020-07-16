@@ -50,7 +50,7 @@
                 <div class="header"> 
                     <div class="wpm6"> 
                       <div class="headerBox">WPM</div> 
-                      <div class="currCal_wpm6">100</div> 
+                      <div class="currCal_wpm6">0</div> 
                     </div> 
                    
               <div class="errors6">
@@ -73,7 +73,7 @@
               </div>
             <div class="row">
                 <div class="col-12 text-wrapper">
-                    <textarea id="textArea6" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
+                    <textarea id="textArea6" oninput="processCurrentText6()" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -84,7 +84,7 @@
                     </button>
                   </div>
                   <div class="offset-11 col-2 " style="margin-top: -50px;">
-                    <button id="restart_btn6" class="btn btn-primary button p-3">
+                    <button id="restart_btn6"  onclick="resetValues6()" class="btn btn-primary button p-3">
                       reset
                     </button>
                   </div>
@@ -111,7 +111,7 @@
                     <div class="header"> 
                         <div class="wpm1"> 
                           <div class="headerBox">WPM</div> 
-                          <div class="currCal_wpm1">100</div> 
+                          <div class="currCal_wpm1">0</div> 
                         </div> 
                        
                         <div class="errors1">
@@ -144,7 +144,7 @@
                       </button>
                     </div>
                     <div class="offset-11 col-2 " style="margin-top: -50px;">
-                      <button onclick="resetValues()"id="restart_btn1" class="btn btn-primary button p-3">
+                      <button onclick="resetValues()" id="restart_btn1" class="btn btn-primary button p-3">
                         reset
                       </button>
                     </div>
@@ -171,7 +171,7 @@
                 <div class="header"> 
                     <div class="wpm3"> 
                       <div class="headerBox">WPM</div> 
-                      <div class="currCal_wpm3">100</div> 
+                      <div class="currCal_wpm3">0</div> 
                     </div> 
                    
               <div class="errors3">
@@ -189,22 +189,22 @@
             </div>
         </div>
         <div class="quote"> 
-           <h4 id="quote3">Click on the area below to start the game.</h4>
+           <h4 id="quote3">Click on the below start button to start the game.</h4>
           </div>
             <div class="row">
                 <div class="col-12 text-wrapper">
-                    <textarea id="textArea3" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
+                    <textarea oninput="processCurrentText3()" id="textArea3" name="text" rows="6" class="col-12" placeholder="Start Typing the text here to start the game"></textarea>
                 </div>
             </div>
             <div class="row">
               <div class="col-12">
                 <div class=" col-2">
-                    <button id="reset1" class="btn btn-primary button p-3">
+                    <button id="reset3" class="btn btn-primary button p-3">
                       start
                     </button>
                   </div>
                   <div class="offset-11 col-2 " style="margin-top: -50px;">
-                    <button id="restart_btn" class="btn btn-primary button p-3">
+                    <button id="restart_btn3" onclick="resetValues3()" class="btn btn-primary button p-3">
                       reset
                     </button>
                   </div>
@@ -223,6 +223,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="text/javascript" src="style6.js"></script>
 <script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="style3.js"></script>
+
   </body>
 </html>
