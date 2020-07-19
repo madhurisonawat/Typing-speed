@@ -16,19 +16,28 @@
   border-radius: 20%;
   box-shadow: black 5px 8px 5px;
 }
+.wpm6,
+.errors6,
+.timer6,
+.accuracy6 {
+  float: left;
+}
+
 .wpm1,
 .wpm3,
 .wpm6 {
   font-size: 2.75rem;
 }
-
-#cont {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  align-items: center;
-  margin-left: 300px;
+#dis {
+  display: none;
 }
+#dis3 {
+  display: none;
+}
+#dis6 {
+  display: none;
+}
+
 .headerBox {
   text-transform: uppercase;
   font-size: 20px;
