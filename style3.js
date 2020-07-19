@@ -7,63 +7,63 @@ let quotes_array3 = [
   "Once there was a crow who wishes to be colorful and beautiful like other birds. He then went to the parrot and shared his thoughts.But parrot said peacock is most beautiful bird so talk to him. Then the crow went to the peacock and told him about his looks.Then the peacock replied,” You are the luckiest bird that has been never caged in life and we because of our beauty stay caged, and you are always free”.After listening to this, crow realized his mistake and thanked God for making him like this and he flew away happily. ",
   "Once there was a Lion in the jungle who used to kill 2-3 animals daily for his meal. All animals went to him to tell, that daily one of them will come to him for his meal.So, the Lion agreed and this started going for many days. One day, it was Rabbit’s turn. When he was on his way he saw a well.Now he plans to kill the lion and save himself. He went to the lion and told him that, there is another lion who claims to be more powerful than him.Then the lion asks the rabbit to take him to that lion. The rabbit takes him to the well and said he lives here. When the lion looked in the well he saw his own reflection and jumped in the well and dies.",
 ];
-let TIME_LIMIT3 = 180;
+let time_limit3 = 180;
 let timer_text3 = document.querySelector(".currCal_time3");
-let acc_text3 = document.querySelector(".currCal_accu3");
-let err_text3 = document.querySelector(".currCal_error3");
+let accuracy_text3 = document.querySelector(".currCal_accu3");
+let error_text3 = document.querySelector(".currCal_error3");
 let wpm_text3 = document.querySelector(".currCal_wpm3");
 let quote_text3 = document.querySelector("#quote3");
-let input_area3 = document.querySelector("#textArea3");
+let input_box3 = document.querySelector("#textArea3");
 let restart_btn3 = document.querySelector("#restart_btn3");
-let wpm_grp3 = document.querySelector(".wpm3");
-let err_grp3 = document.querySelector(".errors3");
-let acc_grp3 = document.querySelector(".accuracy3");
+let wpm_box3 = document.querySelector(".wpm3");
+let err_box3 = document.querySelector(".errors3");
+let acc_box3 = document.querySelector(".accuracy3");
 let start3 = document.getElementById("reset3");
-let time_left3 = TIME_LIMIT3;
-let time_elapsed3 = 0;
+let time_left3 = time_limit3;
+let time_consumed3 = 0;
 let total_errors3 = 0;
 let errors3 = 0;
 let accuracy3 = 0;
-let characterTyped3 = 0;
+let TypeChar3 = 0;
 let current_quote3 = "";
-let quoteNo3 = 0;
+let quoteIndex3 = 0;
 let timer3 = null;
 start3.addEventListener("click", startGame3);
 
 function updateQuote3() {
   quote_text3.textContent = null;
-  quoteNo3 = Math.floor(Math.random() * quotes_array3.length);
-  current_quote3 = quotes_array3[quoteNo3];
+  quoteIndex3 = Math.floor(Math.random() * quotes_array3.length);
+  current_quote3 = quotes_array3[quoteIndex3];
   current_quote3.split("").forEach((char) => {
     const charSpan3 = document.createElement("span");
     charSpan3.innerText = char;
     quote_text3.appendChild(charSpan3);
   });
 
-  // roll over to the first quote
-  if (quoteNo3 < quotes_array3.length - 1) quoteNo3++;
-  else quoteNo3 = 0;
+
+  if (quoteIndex3 < quotes_array3.length - 1) quoteIndex3++;
+  else quoteIndex3 = 0;
 }
 
-function processCurrentText3() {
-  // get current input text and split it
-  curr_input3 = input_area3.value;
+function inputCheck3() {
+
+  curr_input3 = input_box3.value;
   curr_input3_array = curr_input3.split("");
 
-  // increment total characters typed
-  characterTyped3++;
+
+  TypeChar3++;
 
   errors3 = 0;
 
   quoteSpanArray3 = quote_text3.querySelectorAll("span");
   quoteSpanArray3.forEach((char, index) => {
-    let typedChar3 = curr_input3_array[index];
+    let charTyped3 = curr_input3_array[index];
 
-    // characters not currently typed
-    if (typedChar3 == null) {
+
+    if (charTyped3 == null) {
       char.classList.remove("correct_char");
       char.classList.remove("incorrect_char");
-    } else if (typedChar3 === char.innerText) {
+    } else if (charTyped3 === char.innerText) {
       char.classList.add("correct_char");
       char.classList.remove("incorrect_char");
     } else {
@@ -73,49 +73,47 @@ function processCurrentText3() {
     }
   });
 
-  err_text3.textContent = total_errors3 + errors3;
-  let correctCharacters3 = characterTyped3 - (total_errors3 + errors3);
-  let accuracy3Val = (correctCharacters3 / characterTyped3) * 100;
-  acc_text3.textContent = Math.round(accuracy3Val);
+  error_text3.textContent = total_errors3 + errors3;
+  let corr_char3 = TypeChar3 - (total_errors3 + errors3);
+  let acc_val3= (corr_char3 / TypeChar3) * 100;
+  accuracy_text3.textContent = Math.round(acc_val3);
   if (curr_input3.length == current_quote3.length) {
     updateQuote3();
     total_errors3 += errors3;
-    input_area3.value = "";
+    input_box3.value = "";
   }
 }
 
 function updateTimer3() {
   if (time_left3 > 0) {
-    // decrease the current time left
+
     time_left3--;
 
-    // increase the time elapsed
-    time_elapsed3++;
 
-    // update the timer3 text
+    time_consumed3++;
+
     timer_text3.textContent = time_left3 + "s";
   } else {
-    // finish the game
+
     finishGame3();
   }
 }
 
 function finishGame3() {
-  // stop the timer3
+
   clearInterval(timer3);
 
-  // disable the input area
-  input_area3.disabled = true;
+ 
+  input_box3.disabled = true;
 
-  // show finishing text
   quote_text3.textContent = "Click on restart to start a new game.";
   restart_btn.style.display = "block";
 
-  let wpm = Math.round((characterTyped3 / 5 / time_elapsed3) * 60);
-  console.log(wpm);
+  let wpm = Math.round((TypeChar3 / 5 / time_consumed3) * 60);
+
   wpm_text3.textContent = wpm;
 
-  wpm_grp3.style.display = "block";
+  wpm_box3.style.display = "block";
 }
 
 function startGame3() {
@@ -126,19 +124,19 @@ function startGame3() {
 }
 
 function resetValues3() {
-  time_left3 = TIME_LIMIT3;
-  time_elapsed3 = 0;
+  time_left3 = time_limit3;
+  time_consumed3 = 0;
   errors3 = 0;
   total_errors3 = 0;
   accuracy3 = 0;
-  characterTyped3 = 0;
-  quoteNo3 = 0;
-  input_area3.disabled = false;
+  TypeChar3 = 0;
+  quoteIndex3 = 0;
+  input_box3.disabled = false;
 
-  input_area3.value = "";
+  input_box3.value = "";
 
-  acc_text3.textContent = 100;
+  accuracy_text3.textContent = 100;
   timer_text3.textContent = time_left3 + "s";
-  err_text3.textContent = 0;
-  wpm_grp3.style.display = "none";
+  error_text3.textContent = 0;
+  wpm_box3.style.display = "none";
 }

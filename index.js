@@ -8,66 +8,64 @@ let quotes_array1 = [
   " If there is “better”, then there is a “best”. If there is “half”, then there is a “complete”. Far more than being a “better half”, you can be a “best complete”; like a word/phrase that beautifies and gives meaning to a sentence when it is added.”",
 ];
 
-let TIME_LIMIT1 = 60;
+let time_limit1 = 60;
 let timer_text1 = document.querySelector(".currCal_time1");
-let acc_text1 = document.querySelector(".currCal_accu1");
-let err_text1 = document.querySelector(".currCal_error1");
+let accuracy_text1 = document.querySelector(".currCal_accu1");
+let error_text1 = document.querySelector(".currCal_error1");
 let wpm_text1 = document.querySelector(".currCal_wpm1");
 let quote_text1 = document.querySelector("#quote1");
-let input_area1 = document.querySelector("#textArea1");
+let input_box1 = document.querySelector("#textArea1");
 let restart_btn = document.querySelector("#restart_btn1");
-let wpm_grp1 = document.querySelector(".wpm1");
-let err_grp1 = document.querySelector(".errors1");
-let acc_grp1 = document.querySelector(".accuracy1");
+let wpm_box1= document.querySelector(".wpm1");
+let error_box1= document.querySelector(".errors1");
+let acc_box1 = document.querySelector(".accuracy1");
 let start1 = document.getElementById("reset1");
-let time_left1 = TIME_LIMIT1;
-let time_elapsed1 = 0;
+let time_left1 = time_limit1;
+let time_consumed1 = 0;
 let total_errors1 = 0;
 let errors1 = 0;
 let accuracy1 = 0;
-let characterTyped1 = 0;
+let TypeChar1 = 0;
 let current_quote1 = "";
-let quoteNo1 = 0;
+let quoteIndex1 = 0;
 let timer1 = null;
 start1.addEventListener("click", startGame);
 
 function updateQuote() {
   quote_text1.textContent = null;
-  quoteNo1 = Math.floor(Math.random() * quotes_array1.length);
-  current_quote1 = quotes_array1[quoteNo1];
+  quoteIndex1 = Math.floor(Math.random() * quotes_array1.length);
+  current_quote1 = quotes_array1[quoteIndex1];
   current_quote1.split("").forEach((char) => {
     const charSpan1 = document.createElement("span");
     charSpan1.innerText = char;
     quote_text1.appendChild(charSpan1);
   });
 
-  // roll over to the first quote
-  if (quoteNo1 < quotes_array1.length - 1) {
-    quoteNo1++;
+
+  if (quoteIndex1 < quotes_array1.length - 1) {
+    quoteIndex1++;
   } else {
-    quoteNo1 = 0;
+    quoteIndex1 = 0;
   }
 }
-function processCurrentText() {
+function inputCheck() {
 
-  // get current input text and split it
-  curr_input1 = input_area1.value;
+  curr_input1 = input_box1.value;
   curr_input1_array = curr_input1.split("");
 
-  // increment total characters typed
-  characterTyped1++;
+  TypeChar1++;
 
   errors1 = 0;
 
   quoteSpanArray1 = quote_text1.querySelectorAll("span");
   quoteSpanArray1.forEach((char, index) => {
-    let typedChar1 = curr_input1_array[index];
+    let charTyped1 = curr_input1_array[index];
 
-    // characters not currently typed
-    if (typedChar1 == null) {
+
+    if (charTyped1 == null) {
       char.classList.remove("correct_char");
       char.classList.remove("incorrect_char");
-    } else if (typedChar1 === char.innerText) {
+    } else if (charTyped1 === char.innerText) {
 
       char.classList.add("correct_char");
       char.classList.remove("incorrect_char");
@@ -79,55 +77,51 @@ function processCurrentText() {
     }
   });
 
-  err_text1.textContent = total_errors1 + errors1;
-  let correctCharacters1 = characterTyped1 - (total_errors1 + errors1);
-  let accuracy1Val = (correctCharacters1 / characterTyped1) * 100;
-  acc_text1.textContent = Math.round(accuracy1Val);
+  error_text1.textContent = total_errors1 + errors1;
+  let corr_char1 = TypeChar1 - (total_errors1 + errors1);
+  let accu_val1 = (corr_char1 / TypeChar1) * 100;
+  accuracy_text1.textContent = Math.round(accu_val1);
   if (curr_input1.length == current_quote1.length) {
     updateQuote();
     total_errors1 += errors1;
-    input_area1.value = "";
+    input_box1.value = "";
   }
 }
 
 function updateTimer() {
   if (time_left1 > 0) {
-    // decrease the current time left
+    
     time_left1--;
 
-    // increase the time elapsed
-    time_elapsed1++;
 
-    // update the timer1 text
+    time_consumed1++;
+
+
     timer_text1.textContent = time_left1 + "s";
   } else {
-    // finish the game
+   
     finishGame();
   }
 }
 
 function finishGame() {
-  // stop the timer1
+
   clearInterval(timer1);
 
-  // disable the input area
-  input_area1.disabled = true;
 
-  // show finishing text
+  input_box1.disabled = true;
+
+
   quote_text1.textContent = "Click on restart to start a new game.";
   restart_btn.style.display = "block";
 
-  let wpm = Math.round((characterTyped1 / 5 / time_elapsed1) * 60);
+  let wpm = Math.round((TypeChar1 / 5 / time_consumed1) * 60);
   console.log(wpm);
 
   wpm_text1.textContent = wpm;
 
-  let wpm_Array=[]
-wpm_Array.push(wpm_text1.textContent)
-let str1 = JSON.stringify(wpm_Array)
-localStorage.setItem("wpm", str1)
-console.log(wpm_Array)
-  wpm_grp1.style.display = "block";
+
+  wpm_box1.style.display = "block";
 }
 
 function startGame() {
@@ -138,21 +132,21 @@ function startGame() {
 }
 
 function resetValues() {
-  time_left1 = TIME_LIMIT1;
-  time_elapsed1 = 0;
+  time_left1 = time_limit1;
+  time_consumed1 = 0;
   errors1 = 0;
   total_errors1 = 0;
   accuracy1 = 0;
-  characterTyped1 = 0;
-  quoteNo1 = 0;
-  input_area1.disabled = false;
+  TypeChar1 = 0;
+  quoteIndex1 = 0;
+  input_box1.disabled = false;
 
-  input_area1.value = "";
+  input_box1.value = "";
 
-  acc_text1.textContent = 100;
+  accuracy_text1.textContent = 100;
   timer_text1.textContent = time_left1 + "s";
-  err_text1.textContent = 0;
-  wpm_grp1.style.display = "none";
+  error_text1.textContent = 0;
+  wpm_box1.style.display = "none";
 }
 var logbtn = document.getElementById("logBtn");
 logbtn.addEventListener("click", function () {
@@ -160,35 +154,3 @@ logbtn.addEventListener("click", function () {
 });
 
 
-// function renderTable(){
-   
-    
-//     let dis = document.getElementById('dis')
-//     dis.style.display="block"
-//     let tbody = document.querySelector("tbody")
-//     let data = localStorage.getItem("data")
-//     let arr = JSON.parse(data)
-
-//   //  wpmArr.sort(function(a, b){ return b.wpm_text1.textContent- a.wpm_text1.textContent  });
-//    for(let i=0 ; i<arr.length; i++){
-    
-//         let trHead = document.createElement("tr")
-
-//         let th = document.createElement("th")
-//         th.setAttribute("scope", "row")
-//         th.innerHTML = i+1
-        
-//         let nameTd = document.createElement("td")
-//         nameTd.innerHTML = arr[i+1][0]
-//         let wpm_td = document.createElement('td')
-//         wpm_td.textContent = wpmArr[i]
-//         let timeTd = document.createElement("td")
-//         timeTd.innerHTML = new Date()
-
-//         trHead.append(th,nameTd,wpm_td,timeTd)
-         
-
-//         tbody.append(trHead)
-//     }
-  
-// }
